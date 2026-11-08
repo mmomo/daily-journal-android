@@ -57,7 +57,7 @@
 
 - [x] **Step 17. Dependency verification.** Regenerate `gradle/verification-metadata.xml` with `--no-configuration-cache`; add Linux variants of any platform-specific artifacts (checksums cross-checked against the repository's published SHA-1); confirm a clean build.
 - [x] **Step 18. Documentation.** `aidlc-docs/construction/data/code/code-summary.md` (files, versions, runner decision, tests, coverage, log line review, compliance); README updates.
-- [ ] **Step 19. Commit and push, then check CI.** Commit to `main`, push, and confirm `Build and test` passes (`Submit dependencies` stays failing until the dependency graph setting is switched on).
+- [x] **Step 19. Commit and push, then check CI.** *(Done: `Build and test` passes at `068fb99` after three CI fixes recorded in the code summary.)* Commit to `main`, push, and confirm `Build and test` passes (`Submit dependencies` stays failing until the dependency graph setting is switched on).
 
 ## Not Applicable Steps
 

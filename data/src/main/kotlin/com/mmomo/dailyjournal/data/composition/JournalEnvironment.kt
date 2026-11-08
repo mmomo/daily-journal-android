@@ -22,7 +22,11 @@ class JournalEnvironment(
         get() = listOfNotNull(entryChanges, settingsChanges, promptStateChanges, clockEvents?.boundaries).merge()
 }
 
-/** Implemented by the Application, so the widget and receivers reach the same environment without depending on `:app`. */
+/**
+ * Implemented by the Application, so the widget and receivers reach the same environment without
+ * depending on `:app`. The environment is created on a background thread at process start, so callers
+ * wait for it (App NFR design §1); it throws if creation failed.
+ */
 interface JournalEnvironmentProvider {
-    val environment: JournalEnvironment
+    suspend fun awaitEnvironment(): JournalEnvironment
 }

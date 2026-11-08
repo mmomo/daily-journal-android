@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- First frame before Compose draws: the grouped background color, light or dark (APP-PERF-1). -->
+    <style name="Theme.DailyJournal" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/first_frame</item>
+    </style>
+</resources>

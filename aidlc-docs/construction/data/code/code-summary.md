@@ -78,7 +78,7 @@ None can contain entry text, prompt text or settings values. A test also checks 
 | `2d234ed` Data unit | Failed: `guava-parent-33.2.1-jre.pom` checksum missing (KSP classpath on Linux) |
 | `6111bff` Add that checksum | Failed: two more parent POMs missing |
 | `dd7e8d6` Regenerate with `--refresh-dependencies` | Verification passed; Robolectric failed on Java 17 |
-| next | CI switched to Java 21 (see below) |
+| `068fb99` Run CI on Java 21 | **Passed** (`Submit dependencies` still fails: dependency graph off) |
 
 - Root cause of the missing POMs: metadata cached by earlier lenient builds wasn't re-fetched, so `--write-verification-metadata` never saw it. Regenerating with `--refresh-dependencies` recorded everything; the README command now includes the flag.
 - Robolectric's simulated Android 15+ requires Java 21 to run. CI now uses Temurin 21 (local builds already used 21); compiled code still targets Java 17 bytecode. Recorded in the Domain tech stack decisions.

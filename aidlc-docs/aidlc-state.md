@@ -4,7 +4,7 @@
 - **Project Type**: Greenfield
 - **Project**: Daily Journal for Android (Android version of the Daily Journal iOS app)
 - **Start Date**: 2026-11-08T00:20:28Z
-- **Current Stage**: CONSTRUCTION - Data unit, Code Generation (complete - awaiting approval)
+- **Current Stage**: CONSTRUCTION - App unit, Code Generation complete (awaiting approval)
 
 ## Workspace State
 - **Existing Code**: No
@@ -43,8 +43,8 @@
 | # | Unit | Module | Stages | Status |
 |---|---|---|---|---|
 | 1 | Domain (+ project setup, CI) | :domain | FD, NFR Req, NFR Design, Code | Complete (code approved 2026-11-07; dependency graph setting still off) |
-| 2 | Data | :data | FD, NFR Req, NFR Design, Code | Code generated (156 tests pass); awaiting approval |
-| 3 | App | :app | NFR Req, NFR Design, Code | Not started |
+| 2 | Data | :data | FD, NFR Req, NFR Design, Code | Complete (code approved 2026-11-07) |
+| 3 | App | :app | NFR Req, NFR Design, Code | Code generated (21 steps); awaiting approval |
 | 4 | Widget | :widget | Code | Not started |
 
 ## Stage Progress
@@ -71,6 +71,6 @@
 
 ## Current Status
 - **Lifecycle Phase**: CONSTRUCTION
-- **Current Stage**: Data unit - Code Generation (complete, pushed)
-- **Next Stage**: App unit - NFR Requirements
-- **Status**: Data code awaiting approval
+- **Current Stage**: App unit - Code Generation (complete, awaiting approval)
+- **Next Stage**: Widget unit - Code Generation
+- **Status**: App code generated, 188 tests pass, emulator walkthrough done; awaiting approval

@@ -443,3 +443,112 @@
 **Context**: CONSTRUCTION - Data unit, Code Generation Part 2
 
 ---
+## Code Generation (Data) - Commit, Push and CI
+**Timestamp**: 2026-11-08T05:27:21Z
+**User Input**: N/A
+**AI Response**: "Committed 2d234ed and pushed. CI fixes: added guava-parent 33.2.1-jre POM checksum (6111bff, SHA-1 cross-checked); regenerated verification metadata with --refresh-dependencies after finding that cached metadata hadn't been recorded (dd7e8d6, README command updated); switched CI to Java 21 because Robolectric's simulated Android 15+ requires it, bytecode still Java 17 (068fb99, recorded in Domain tech stack decisions). Build and test passes on GitHub; Submit dependencies still fails until the dependency graph is enabled."
+**Context**: CONSTRUCTION - Data unit, Code Generation step 19
+
+---
+
+## Code Generation (Data) - Approval Prompt
+**Timestamp**: 2026-11-08T05:27:21Z
+**AI Prompt**: "Code Generation complete for Data. Review data/ and aidlc-docs/construction/data/code/. Options: Request Changes, or Continue to Next Stage (App unit, NFR Requirements)."
+**Context**: CONSTRUCTION - Data unit, awaiting approval
+
+---
+## Code Generation (Data) - Approval Response
+**Timestamp**: 2026-11-08T05:29:14Z
+**User Input**: "continue"
+**AI Response**: "Data code approved; Data unit complete. Starting the App unit (Functional Design skipped per Units Generation Q6:A) with NFR Requirements."
+**Context**: CONSTRUCTION - Data unit complete
+
+---
+## NFR Requirements (App) - Planning
+**Timestamp**: 2026-11-08T05:29:14Z
+**User Input**: N/A
+**AI Response**: "Created aidlc-docs/construction/plans/app-nfr-requirements-plan.md with 6 questions (launch speed and baseline profile, serif font, predictive back, release build and signing, App test scope, versioning and tags) and a 4-step checklist. Scalability and availability N/A. Waiting for answers."
+**Context**: CONSTRUCTION - App unit, NFR Requirements
+
+---
+## NFR Requirements (App) - Answers Received
+**Timestamp**: 2026-11-08T05:31:10Z
+**User Input**: "done"
+**AI Response**: "Read answers: Q1 A (light startup, measure on device), Q2 A (system serif), Q3 B (classic Back), Q4 B (debug build), Q5 A (ViewModel tests only), Q6 A (manual version, Git tags). Q4:B conflicts with approved NFR-6.2 and NFR-6.4 and the enforced SECURITY-09 (would be blocking). Created app-nfr-requirements-clarification-questions.md with 1 question, including a compliant middle option (hardened release build signed with the existing debug key)."
+**Context**: CONSTRUCTION - App unit, NFR Requirements clarification gate
+
+---
+## NFR Requirements (App) - Clarification and Generation
+**Timestamp**: 2026-11-08T05:35:33Z
+**User Input**: "done"
+**AI Response**: "Read clarification C1: B (hardened release build signed with the existing debug key). Resolves the conflict with NFR-6.2, NFR-6.4 and SECURITY-09. Generated nfr-requirements.md (APP-PERF-1..3, APP-USE-1..5, APP-SEC-1..8, APP-REL-1..5, APP-MAIN-1..3, release process, N/A) and tech-stack-decisions.md (Compose BOM, Material 3, ViewModels with SavedStateHandle, Navigation Compose with kotlinx-serialization typed routes, system serif, classic Back, hardened release build with debug signing, tests). Security and PBT: compliant."
+**Context**: CONSTRUCTION - App unit, NFR Requirements complete
+
+---
+
+## NFR Requirements (App) - Approval Prompt
+**Timestamp**: 2026-11-08T05:35:33Z
+**AI Prompt**: "NFR Requirements complete for App. Review aidlc-docs/construction/app/nfr-requirements/. Options: Request Changes, or Continue to Next Stage (NFR Design)."
+**Context**: CONSTRUCTION - App unit, awaiting approval
+
+---
+## NFR Requirements (App) - Approval Response
+**Timestamp**: 2026-11-08T05:36:16Z
+**User Input**: "continue"
+**AI Response**: "App NFR requirements approved. Starting NFR Design for the App unit."
+**Context**: CONSTRUCTION - App unit, NFR Requirements approved
+
+---
+
+## NFR Design (App) - Planning
+**Timestamp**: 2026-11-08T05:36:16Z
+**User Input**: N/A
+**AI Response**: "Created aidlc-docs/construction/plans/app-nfr-design-plan.md with 2 questions (environment creation timing and thread; how startup state reaches screens) and a 4-step checklist; other patterns settled by earlier decisions and listed in the plan. Waiting for answers."
+**Context**: CONSTRUCTION - App unit, NFR Design
+
+---
+## NFR Design (App) - Answers and Generation
+**Timestamp**: 2026-11-08T05:38:03Z
+**User Input**: "ready"
+**AI Response**: "Read answers Q1 A (environment created on a background thread at process start; everything awaits it) and Q2 A (one app-level start state observed by MainActivity). No ambiguities. Generated nfr-design-patterns.md (startup, start state, refresh signals, editor autosave/Done/Back/midnight flush/limits, classic Back table, permission flow, deep-link routing with pending link, receivers with goAsync and a time limit, release hardening and log stripping, error wording, test patterns incl. stateful editor property) and logical-components.md. Recorded a planned Data unit change: JournalEnvironmentProvider becomes suspend awaitEnvironment(). Security and PBT: compliant."
+**Context**: CONSTRUCTION - App unit, NFR Design complete
+
+---
+
+## NFR Design (App) - Approval Prompt
+**Timestamp**: 2026-11-08T05:38:03Z
+**AI Prompt**: "NFR Design complete for App. Review aidlc-docs/construction/app/nfr-design/. Options: Request Changes, or Continue to Next Stage (Code Generation)."
+**Context**: CONSTRUCTION - App unit, awaiting approval
+
+---
+## NFR Design (App) - Approval Response
+**Timestamp**: 2026-11-08T05:38:55Z
+**User Input**: "continue"
+**AI Response**: "App NFR design approved. Starting Code Generation Part 1 (Planning) for the App unit."
+**Context**: CONSTRUCTION - App unit, NFR Design approved
+
+---
+
+## Code Generation (App) - Plan / Approval Prompt
+**Timestamp**: 2026-11-08T05:38:55Z
+**User Input**: N/A
+**AI Response**: "Created aidlc-docs/construction/plans/app-code-generation-plan.md with 21 steps in 4 parts (build and the Data provider change; app code by screen; tests, full build, emulator walkthrough; verification metadata, docs, commit and push with CI) and story traceability."
+**AI Prompt**: "App code generation plan ready (21 steps). Approve to start generation, or request changes."
+**Context**: CONSTRUCTION - App unit, Code Generation Part 1, awaiting approval
+
+---
+## Code Generation (App) - Plan Approval Response
+**Timestamp**: 2026-11-08T05:39:29Z
+**User Input**: "approve"
+**AI Response**: "App code generation plan approved (including the emulator setup in Step 18 and the commit and push in Step 21). Starting Part 2 at Step 1."
+**Context**: CONSTRUCTION - App unit, Code Generation Part 1 approved
+
+---
+
+## Code Generation (App) - Generation Complete
+**Timestamp**: 2026-11-08T06:20:00Z
+**User Input**: N/A
+**AI Response**: "Executed Steps 1-20 of the App code generation plan: app code (26 files), manifest and resources, 32 app tests (one stateful property test), full build with Lint and the release APK, emulator walkthrough on Medium_Phone_API_37.0 with 9 screenshots, verification metadata regenerated, code summary and README. The emulator found an autosave bug (the autosave job cancelled itself, leaving the status on 'Saving...'); fixed with a regression test. A connected physical phone (Redmi Note 8) was detected and left untouched. Step 21 (commit, push, CI) follows."
+**Context**: CONSTRUCTION - App unit, Code Generation Part 2
+
+---
