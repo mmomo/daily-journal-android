@@ -91,6 +91,12 @@ Not checked on the emulator: a reminder alarm actually firing (its receiver isn'
 
 Remaining Lint warnings, accepted: the portrait lock (approved; Android 16+ ignores it on large screens only), and two `InlinedApi` notes on `POST_NOTIFICATIONS` (the dialog is only requested on Android 13+).
 
+## CI (Step 21)
+
+| Commit | Build and test |
+|---|---|
+| `50548ef` App unit | **Passed** on the first run (`Submit dependencies` still fails: dependency graph off) |
+
 ## Compliance
 
 | Extension | Result |

@@ -58,7 +58,7 @@
 
 - [x] **Step 19. Dependency verification.** Regenerate with `--refresh-dependencies --no-configuration-cache`; check platform-specific artifacts; strict build passes.
 - [x] **Step 20. Documentation.** `aidlc-docs/construction/app/code/code-summary.md` (files, versions, data change, tests, coverage, log review, emulator walkthrough with screenshots, compliance); README (install instructions for your phone, release tagging).
-- [ ] **Step 21. Commit and push, then check CI.** Commit to `main`, push, confirm `Build and test` passes.
+- [x] **Step 21. Commit and push, then check CI.** Commit to `main`, push, confirm `Build and test` passes.
 
 ## Not Applicable Steps
 
