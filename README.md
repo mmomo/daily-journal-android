@@ -36,7 +36,7 @@ Property-based tests use a new random seed on every run. If one fails, the outpu
 - `gradle/verification-metadata.xml` holds a SHA-256 checksum for every downloaded file; the build fails if a file doesn't match. After changing a dependency, regenerate it:
 
   ```sh
-  ./gradlew --write-verification-metadata sha256 build koverXmlReport koverHtmlReport
+  ./gradlew --write-verification-metadata sha256 --no-configuration-cache build koverXmlReport koverHtmlReport
   ```
 
   and review the changes before committing.
