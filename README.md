@@ -37,9 +37,9 @@ Property-based tests use a new random seed on every run. If one fails, the outpu
 - `gradle/verification-metadata.xml` holds a SHA-256 checksum for every downloaded file; the build fails if a file doesn't match. After changing a dependency, regenerate it:
 
   ```sh
-  ./gradlew --write-verification-metadata sha256 --no-configuration-cache build koverXmlReport koverHtmlReport
+  ./gradlew --write-verification-metadata sha256 --refresh-dependencies --no-configuration-cache build koverXmlReport koverHtmlReport
   ```
 
-  and review the changes before committing.
+  and review the changes before committing. `--refresh-dependencies` makes Gradle fetch every file again, so metadata cached by earlier builds (such as parent POMs) is recorded too.
 - CI (`.github/workflows/ci.yml`) builds and tests every push and pull request, and submits the dependency graph to GitHub from `main`.
 - **One-time setting**: turn on **Dependabot alerts** in the repository's Settings → Code security, so GitHub warns about known vulnerabilities. An SBOM can be exported from Insights → Dependency graph → Export SBOM.
