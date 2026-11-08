@@ -48,7 +48,7 @@ All shipped libraries are official Kotlin or Google/AndroidX libraries (applicat
 | Triggers | Every push and every pull request (Q9:B) |
 | Runner | Fixed Ubuntu image version (not `ubuntu-latest`); it includes the Android SDK |
 | Actions | Official actions (checkout, setup-java, Gradle setup, dependency submission, upload-artifact), each pinned to a full commit SHA |
-| JDK | Temurin 17 |
+| JDK | Temurin 21 *(changed from 17 during the Data unit: Robolectric's simulated Android 15+ needs Java 21 to run; bytecode still targets Java 17)* |
 | Steps | Validate the Gradle wrapper → build all modules → run all tests (example, property and performance smoke tests) → Kover report → upload test and coverage reports → submit dependencies to GitHub |
 | Permissions | `contents: read` by default; `contents: write` only on the dependency submission job |
 | Secrets | None needed |

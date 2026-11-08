@@ -71,6 +71,18 @@ None can contain entry text, prompt text or settings values. A test also checks 
 | Alarm assertions use the registered `PendingIntent` looked up like Android does | Robolectric 4.17's `ScheduledAlarm.operation` is deprecated with no replacement getter |
 | Domain test support moved to test fixtures; category generator fixed | Shared generators for data tests (PBT-07); the old generator was flaky |
 
+## CI (Step 19)
+
+| Commit | Build and test |
+|---|---|
+| `2d234ed` Data unit | Failed: `guava-parent-33.2.1-jre.pom` checksum missing (KSP classpath on Linux) |
+| `6111bff` Add that checksum | Failed: two more parent POMs missing |
+| `dd7e8d6` Regenerate with `--refresh-dependencies` | Verification passed; Robolectric failed on Java 17 |
+| next | CI switched to Java 21 (see below) |
+
+- Root cause of the missing POMs: metadata cached by earlier lenient builds wasn't re-fetched, so `--write-verification-metadata` never saw it. Regenerating with `--refresh-dependencies` recorded everything; the README command now includes the flag.
+- Robolectric's simulated Android 15+ requires Java 21 to run. CI now uses Temurin 21 (local builds already used 21); compiled code still targets Java 17 bytecode. Recorded in the Domain tech stack decisions.
+
 ## Known Limitations
 
 - **Robolectric runtime download**: Robolectric fetches its simulated Android runtime from Maven Central by itself at test time, outside Gradle's checksum list. Test-only; nothing from it ships in the app.
