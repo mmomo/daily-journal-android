@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- ReminderNotifier posts the daily reminder. The only permission the app asks for (DATA-SEC-5);
+         on Android 13+ the App unit requests it at runtime when the reminder is turned on. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+</manifest>

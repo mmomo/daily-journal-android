@@ -43,7 +43,10 @@ object Generators {
         day.bind().startIn(zone) + secondOfDay.bind().seconds
     }
 
-    val categories: Arb<Set<PromptCategory>> = Arb.set(Arb.element(PromptCategory.entries), 1..4)
+    /** One of the 15 non-empty category combinations, chosen by a bit mask (each equally likely). */
+    val categories: Arb<Set<PromptCategory>> = Arb.int(1..15).let { masks ->
+        arbitrary { val mask = masks.bind(); PromptCategory.entries.filterIndexed { i, _ -> mask and (1 shl i) != 0 }.toSet() }
+    }
 
     private val whitespace = listOf(" ", "\t", "\n", "\r\n", " ", " ")
     private val words = listOf("quiet", "morning", "Café", "naïve", "über", "señal", "日記", "☕", "🌅", "grateful", "beach")

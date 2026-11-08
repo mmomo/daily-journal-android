@@ -50,6 +50,21 @@
 - **PBT-08 check**: a temporary failing property (then deleted) printed the shrunk input and "Repeat this test by using seed …".
 - **Verification check**: changing one checksum made the build fail on that artifact; restored afterwards.
 
+## CI Results (Step 20)
+
+| Commit | Build and test | Submit dependencies |
+|---|---|---|
+| `3f601c3` Domain unit | Failed: plugin metadata missing from the checksum list | Failed: dependency graph off |
+| `bf68e64` Record checksums for all build plugin metadata | Failed: Linux `aapt2` jar missing (the Mac build recorded only the macOS jar) | Failed: dependency graph off |
+| `f6ea379` Add the Linux aapt2 checksum | **Passed** | Failed: dependency graph off |
+
+Fixes made:
+- The first checksum list was generated with the configuration cache on, so build-plugin metadata (BOM and parent POMs) was never resolved. Regenerated with `--no-configuration-cache`; the README command now includes it.
+- `aapt2` ships one jar per operating system. The Linux jar's SHA-256 was computed from Google Maven and its SHA-1 checked against Google's published value.
+- Removed `gradle/gradle-daemon-jvm.properties` (written by `gradle wrapper`): it would make Gradle download JDK 25 from foojay.io, a source outside Google Maven and Maven Central.
+
+**Open**: `Submit dependencies` needs the repository's dependency graph switched on (GitHub → Settings → Code security → Dependency graph, or by turning on Dependabot alerts). Until then Dependabot alerts and the SBOM export (NFR-6.5) aren't available.
+
 ## Design Refinements Applied
 
 | Refinement | Where decided |

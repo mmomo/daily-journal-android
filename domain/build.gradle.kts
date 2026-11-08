@@ -2,6 +2,7 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
     alias(libs.plugins.kover)
+    `java-test-fixtures`
 }
 
 java {
@@ -12,6 +13,10 @@ java {
 dependencies {
     api(libs.kotlinx.coroutines.core)
     api(libs.kotlinx.datetime)
+
+    // Shared test support (generators, fakes, TestEnvironment), reused by the data tests.
+    testFixturesApi(libs.kotest.property)
+    testFixturesApi(libs.kotest.assertions.core)
 
     testImplementation(libs.kotest.runner.junit5)
     testImplementation(libs.kotest.assertions.core)

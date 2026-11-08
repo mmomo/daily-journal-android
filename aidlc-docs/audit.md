@@ -306,3 +306,140 @@
 **Context**: CONSTRUCTION - Domain unit, Code Generation Part 2
 
 ---
+## Code Generation (Domain) - Commit, Push and CI
+**Timestamp**: 2026-11-08T01:54:01Z
+**User Input**: N/A
+**AI Response**: "Removed gradle/gradle-daemon-jvm.properties (would download JDK 25 from foojay.io, outside the allowed sources). Committed 3f601c3 and pushed to main (authorized by plan step 20). CI: Build and test failed on missing checksums for plugin metadata (metadata had been generated with the configuration cache on); regenerated with --no-configuration-cache (bf68e64). CI then failed on the Linux aapt2 jar (macOS build recorded only the osx jar); added its SHA-256, computed from Google Maven with SHA-1 matching Google's published value (f6ea379). Build and test now passes on GitHub. Submit dependencies fails because the repository's dependency graph is disabled; enabling it is a repository setting, so asked the user before changing it."
+**Context**: CONSTRUCTION - Domain unit, Code Generation step 20
+
+---
+
+## Code Generation (Domain) - Approval Prompt
+**Timestamp**: 2026-11-08T01:54:01Z
+**AI Prompt**: "Code Generation complete for Domain. Review domain/ and aidlc-docs/construction/domain/code/. Options: Request Changes, or Continue to Next Stage (Data unit, Functional Design). Also asked whether to switch on the repository's dependency graph and Dependabot alerts."
+**Context**: CONSTRUCTION - Domain unit, awaiting approval
+
+---
+## Code Generation (Domain) - Approval Response
+**Timestamp**: 2026-11-08T01:54:43Z
+**User Input**: "continue"
+**AI Response**: "Domain code approved; Domain unit complete. The question about switching on the repository dependency graph was not answered, so it stays off and is tracked as open. Starting the Data unit with Functional Design."
+**Context**: CONSTRUCTION - Domain unit complete
+
+---
+## Functional Design (Data) - Planning
+**Timestamp**: 2026-11-08T01:55:06Z
+**User Input**: N/A
+**AI Response**: "Created aidlc-docs/construction/plans/data-functional-design-plan.md with 6 questions (settings and prompt state format, search at storage level, date and time representation, corrupt settings, unreadable entry rows, clock signal triggers) and a 5-step checklist. Frontend components N/A. Waiting for answers."
+**Context**: CONSTRUCTION - Data unit, Functional Design
+
+---
+## Functional Design (Data) - Answers and Generation
+**Timestamp**: 2026-11-08T01:58:43Z
+**User Input**: "done"
+**AI Response**: "Read answers Q1-Q6: all A (iOS-shaped JSON for settings and prompt state; search by loading all entries and filtering with the domain matcher; day key plus day number and UTC milliseconds; defaults on corrupt settings; skip unreadable rows without deleting; clock signal at midnight, 12:00, system time/zone changes and app foreground). No ambiguities. Read the iOS store code to match JSON field names exactly (promptID, shownPromptIDs). Generated domain-entities.md (entries table with unique day_key, settings.v1 and promptState.v1 JSON, new notificationPermissionAsked.v1 flag, prompt asset, mappings), business-rules.md (DATA-E1..E9, S1..S7, P1..P4, R1..R4, C1..C3, W1..W4, story mapping) and business-logic-model.md (flows, Testable Properties per PBT-01, shared domain test generators via test fixtures, open points). Security: no journal text in logs, explicit immutable tap intents, private storage. PBT-01: compliant."
+**Context**: CONSTRUCTION - Data unit, Functional Design complete
+
+---
+
+## Functional Design (Data) - Approval Prompt
+**Timestamp**: 2026-11-08T01:58:43Z
+**AI Prompt**: "Functional Design complete for Data. Review aidlc-docs/construction/data/functional-design/. Options: Request Changes, or Continue to Next Stage (NFR Requirements)."
+**Context**: CONSTRUCTION - Data unit, awaiting approval
+
+---
+## Functional Design (Data) - Approval Response
+**Timestamp**: 2026-11-08T01:59:36Z
+**User Input**: "continue"
+**AI Response**: "Data functional design approved. Starting NFR Requirements for the Data unit."
+**Context**: CONSTRUCTION - Data unit, Functional Design approved
+
+---
+
+## NFR Requirements (Data) - Planning
+**Timestamp**: 2026-11-08T01:59:36Z
+**User Input**: N/A
+**AI Response**: "Created aidlc-docs/construction/plans/data-nfr-requirements-plan.md with 8 questions (entry storage library, settings storage, JSON library, reminder exactness, reminders registered at a time, performance targets, test approach, logging helper) and a 4-step checklist. Scalability, availability and usability N/A with reasons. Waiting for answers."
+**Context**: CONSTRUCTION - Data unit, NFR Requirements
+
+---
+## NFR Requirements (Data) - Answers and Generation
+**Timestamp**: 2026-11-08T02:02:52Z
+**User Input**: "done"
+**AI Response**: "Read answers: Q1 A (Room), Q2 A (DataStore Preferences), Q3 B (org.json), Q4 A (inexact reminders), Q5 A (only the next reminder registered), Q6 B (no data-layer speed targets; measured on device in Build and Test), Q7 A (JVM tests with Robolectric), Q8 B (Android logger directly, review ensures no journal text). Checked Q6:B against NFR-5.2 and Q8:B against NFR-6.2 / SECURITY-03: consistent. Generated nfr-requirements.md (DATA-PERF-1..2, DATA-REL-1..6, DATA-SEC-1..8, DATA-MAIN-1..5) and tech-stack-decisions.md (Room with KSP and exported schemas, DataStore, org.json, AlarmManager inexact one-at-a-time, NotificationManagerCompat, ProcessLifecycleOwner, Robolectric with a JUnit Vintage fallback note, domain test fixtures). Security and PBT: compliant."
+**Context**: CONSTRUCTION - Data unit, NFR Requirements complete
+
+---
+
+## NFR Requirements (Data) - Approval Prompt
+**Timestamp**: 2026-11-08T02:02:52Z
+**AI Prompt**: "NFR Requirements complete for Data. Review aidlc-docs/construction/data/nfr-requirements/. Options: Request Changes, or Continue to Next Stage (NFR Design)."
+**Context**: CONSTRUCTION - Data unit, awaiting approval
+
+---
+## NFR Requirements (Data) - Approval Response
+**Timestamp**: 2026-11-08T02:03:41Z
+**User Input**: "continue"
+**AI Response**: "Data NFR requirements approved. Starting NFR Design for the Data unit."
+**Context**: CONSTRUCTION - Data unit, NFR Requirements approved
+
+---
+
+## NFR Design (Data) - Planning
+**Timestamp**: 2026-11-08T02:03:41Z
+**User Input**: N/A
+**AI Response**: "Created aidlc-docs/construction/plans/data-nfr-design-plan.md with 4 questions (source of entry change signals, eager vs lazy prompt loading, corrupted preferences file, clock timer approach) and a 4-step checklist. Scalability N/A; security patterns already set in NFR Requirements. Waiting for answers."
+**Context**: CONSTRUCTION - Data unit, NFR Design
+
+---
+## NFR Design (Data) - Answers and Generation
+**Timestamp**: 2026-11-08T02:05:53Z
+**User Input**: "done"
+**AI Response**: "Read answers Q1-Q4: all A (Room invalidation tracking for entry changes; eager prompt loading at environment creation; replace a corrupted preferences file with empty preferences; in-app coroutine timer plus time-change broadcasts and foreground signal). No ambiguities. Generated nfr-design-patterns.md (change signals, prompt loading, corruption handling at every level, clock timer, threading and single instances, error mapping and logging, explicit immutable intents with receiver classes passed in to avoid a :data -> :app dependency, migrations and schema export, testing patterns with shared test fixtures) and logical-components.md. Security and PBT: compliant."
+**Context**: CONSTRUCTION - Data unit, NFR Design complete
+
+---
+
+## NFR Design (Data) - Approval Prompt
+**Timestamp**: 2026-11-08T02:05:53Z
+**AI Prompt**: "NFR Design complete for Data. Review aidlc-docs/construction/data/nfr-design/. Options: Request Changes, or Continue to Next Stage (Code Generation)."
+**Context**: CONSTRUCTION - Data unit, awaiting approval
+
+---
+## NFR Design (Data) - Approval Response
+**Timestamp**: 2026-11-08T02:06:52Z
+**User Input**: "continue"
+**AI Response**: "Data NFR design approved. Starting Code Generation Part 1 (Planning) for the Data unit."
+**Context**: CONSTRUCTION - Data unit, NFR Design approved
+
+---
+
+## Code Generation (Data) - Plan / Approval Prompt
+**Timestamp**: 2026-11-08T02:06:52Z
+**User Input**: N/A
+**AI Response**: "Created aidlc-docs/construction/plans/data-code-generation-plan.md with 19 steps in 4 parts (build setup incl. moving domain test support to shared test fixtures; data code; data tests incl. Robolectric runner check; verification metadata, docs, commit and push with CI check) and story traceability."
+**AI Prompt**: "Data code generation plan ready (19 steps). Approve to start generation, or request changes."
+**Context**: CONSTRUCTION - Data unit, Code Generation Part 1, awaiting approval
+
+---
+## Code Generation (Data) - Plan Approval Response
+**Timestamp**: 2026-11-08T02:07:16Z
+**User Input**: "approve"
+**AI Response**: "Data code generation plan approved (including Step 19 commit and push). Starting Part 2 at Step 1."
+**Context**: CONSTRUCTION - Data unit, Code Generation Part 1 approved
+
+---
+## Code Generation (Data) - Progress (paused)
+**Timestamp**: 2026-11-08T02:21:39Z
+**User Input**: N/A
+**AI Response**: "Steps 1-15 done: versions resolved (Room 2.8.5, KSP 2.3.13, DataStore 1.3.0, Core 1.19.1, Lifecycle 2.11.0, Robolectric 4.17, JUnit 4.13.2, Vintage 5.13.4 aligned with JUnit Platform 1.13.4); domain test support moved to test fixtures (fixed a flaky category generator; 113 domain tests pass); data code written; Robolectric needs JUnit 4 (Kotest runner doesn't set up Robolectric), test JVM needs --add-exports java.base/jdk.internal.access and --add-opens java.base/java.io; all data example and property tests pass locally (builds run with --dependency-verification=lenient until Step 17). Paused because the usage limit was reached. Remaining: Step 16 full build and log review, Step 17 verification metadata, Step 18 docs, Step 19 commit, push, CI. Nothing committed yet."
+**Context**: CONSTRUCTION - Data unit, Code Generation Part 2 paused at Step 16
+
+---
+## Code Generation (Data) - Resumed and Completed Locally
+**Timestamp**: 2026-11-08T05:15:21Z
+**User Input**: "continue"
+**AI Response**: "Resumed at Step 16. Full build failed on Android Lint (NotificationPermission): declared POST_NOTIFICATIONS in the data manifest; build then passed with warnings as errors. 156 tests pass (113 domain, 43 data); data coverage lines 86.6%, branches 81.5%. Reviewed the 5 log lines in :data (no journal text). Step 17: regenerated verification metadata (424 components), restored the trust comment, confirmed only aapt2 is platform-specific (Linux and macOS recorded), strict build passes. Step 18: wrote code-summary.md (incl. Robolectric runtime download caveat) and README updates. Proceeding to Step 19 commit, push, CI."
+**Context**: CONSTRUCTION - Data unit, Code Generation Part 2
+
+---

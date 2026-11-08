@@ -2,14 +2,14 @@
 
 The Android version of Daily Journal: one journaling prompt a day, a quick text entry, a streak counter, and a Home Screen widget.
 
-This project is being built with the AI-DLC workflow (see [`CLAUDE.md`](CLAUDE.md)); planning and design documents live in [`aidlc-docs/`](aidlc-docs/). Done so far: project setup and the **domain** module (all business rules, ported from the iOS app and checked against it). Storage, screens and the widget come next.
+This project is being built with the AI-DLC workflow (see [`CLAUDE.md`](CLAUDE.md)); planning and design documents live in [`aidlc-docs/`](aidlc-docs/). Done so far: project setup, the **domain** module (all business rules, ported from the iOS app and checked against it) and the **data** module (storage, prompts, reminders, clock). Screens and the widget come next.
 
 ## Layout
 
 | Module | Contents |
 |---|---|
 | `domain/` | Pure Kotlin business rules: prompt selection, entries, streak, search, export, reminders, use cases |
-| `data/` | Storage, prompt library, notifications (skeleton for now) |
+| `data/` | Room database for entries, DataStore for settings and prompt state (same JSON as iOS), the 600-prompt library, reminders and notifications, the clock |
 | `app/` | Screens and the Android app (skeleton for now) |
 | `widget/` | Home Screen widget (skeleton for now) |
 
@@ -25,6 +25,7 @@ No separate Gradle install is needed; use the wrapper.
 ```sh
 ./gradlew build                      # compile all modules (warnings are errors) and run all tests
 ./gradlew :domain:test               # domain tests only: example-based, property-based, performance smoke
+./gradlew :data:testDebugUnitTest    # data tests (Robolectric: Room, DataStore, notifications on the JVM)
 ./gradlew koverHtmlReport            # coverage report in build/reports/kover/html
 ```
 

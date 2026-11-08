@@ -64,7 +64,7 @@ US-2.6 has no domain part. Each story is ticked when its domain code and tests a
 - [x] **Step 17. Dependency verification.** Generate `gradle/verification-metadata.xml` with SHA-256 for every resolved artifact (`--write-verification-metadata sha256`), review it, and confirm a clean build passes with verification on.
 - [x] **Step 18. CI workflow.** `.github/workflows/ci.yml`: push and pull request triggers; fixed Ubuntu runner; `build-and-test` job (wrapper validation, Temurin 17, Gradle setup, build and tests, Kover report, upload reports; `contents: read`); `dependency-submission` job (`contents: write`); every action pinned by commit SHA.
 - [x] **Step 19. Documentation.** `aidlc-docs/construction/domain/code/code-summary.md` (files created, versions chosen, test counts, coverage, design refinements applied, compliance); update `README.md` (build and test commands, Dependabot setting to switch on).
-- [ ] **Step 20. Commit and push, then check CI.** Commit the project setup and domain to `main` on GitHub (public repository) and confirm both CI jobs pass. If CI fails, fix and push again.
+- [x] **Step 20. Commit and push, then check CI.** *(Done: `Build and test` passes on GitHub. `Submit dependencies` fails until the repository's dependency graph is switched on, a repository setting awaiting your go-ahead.)* Commit the project setup and domain to `main` on GitHub (public repository) and confirm both CI jobs pass. If CI fails, fix and push again.
 
 ## Not Applicable Steps (from the standard template)
 
