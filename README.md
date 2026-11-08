@@ -2,4 +2,43 @@
 
 The Android version of Daily Journal: one journaling prompt a day, a quick text entry, a streak counter, and a Home Screen widget.
 
-This project is in planning. It follows the AI-DLC workflow (see [`CLAUDE.md`](CLAUDE.md)), and planning documents live in [`aidlc-docs/`](aidlc-docs/).
+This project is being built with the AI-DLC workflow (see [`CLAUDE.md`](CLAUDE.md)); planning and design documents live in [`aidlc-docs/`](aidlc-docs/). Done so far: project setup and the **domain** module (all business rules, ported from the iOS app and checked against it). Storage, screens and the widget come next.
+
+## Layout
+
+| Module | Contents |
+|---|---|
+| `domain/` | Pure Kotlin business rules: prompt selection, entries, streak, search, export, reminders, use cases |
+| `data/` | Storage, prompt library, notifications (skeleton for now) |
+| `app/` | Screens and the Android app (skeleton for now) |
+| `widget/` | Home Screen widget (skeleton for now) |
+
+## Prerequisites
+
+- JDK 17 or newer
+- Android SDK with platform API 37 (installed with Android Studio). Gradle finds it through `ANDROID_HOME` or a git-ignored `local.properties` with `sdk.dir=...`
+
+No separate Gradle install is needed; use the wrapper.
+
+## Build and test
+
+```sh
+./gradlew build                      # compile all modules (warnings are errors) and run all tests
+./gradlew :domain:test               # domain tests only: example-based, property-based, performance smoke
+./gradlew koverHtmlReport            # coverage report in build/reports/kover/html
+```
+
+Property-based tests use a new random seed on every run. If one fails, the output shows the smallest failing input and a line like `Repeat this test by using seed 123`; set that seed in the test's `PropTestConfig` to replay it.
+
+## Dependencies and supply chain
+
+- Every version is pinned in `gradle/libs.versions.toml`, and only Google Maven and Maven Central are used.
+- `gradle/verification-metadata.xml` holds a SHA-256 checksum for every downloaded file; the build fails if a file doesn't match. After changing a dependency, regenerate it:
+
+  ```sh
+  ./gradlew --write-verification-metadata sha256 build koverXmlReport koverHtmlReport
+  ```
+
+  and review the changes before committing.
+- CI (`.github/workflows/ci.yml`) builds and tests every push and pull request, and submits the dependency graph to GitHub from `main`.
+- **One-time setting**: turn on **Dependabot alerts** in the repository's Settings → Code security, so GitHub warns about known vulnerabilities. An SBOM can be exported from Insights → Dependency graph → Export SBOM.

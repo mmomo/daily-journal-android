@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Skeleton from the Domain unit's project setup. Screens, backup rules and receivers come in the App unit. -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:allowBackup="false"
+        android:label="Daily Journal" />
+
+</manifest>

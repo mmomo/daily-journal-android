@@ -28,7 +28,7 @@ C) Full parity plus Android-only extras (describe the extras after the [Answer]:
 
 D) Other (please describe after [Answer]: tag below)
 
-[Answer]: 
+[Answer]: A
 
 ## Question 2
 Where should the prompts come from? Note that this repository is public, so anything bundled in it becomes public.
@@ -39,7 +39,7 @@ B) Write a new prompt library for Android
 
 C) Other (please describe after [Answer]: tag below)
 
-[Answer]: 
+[Answer]: A
 
 ## Question 3
 What is the minimum Android version to support?
@@ -52,7 +52,7 @@ C) Android 12 (API 31): newest widget features and Material You dynamic colors e
 
 D) Other (please describe after [Answer]: tag below)
 
-[Answer]: 
+[Answer]: B
 
 ## Question 4
 Which UI toolkit should be used?
@@ -63,7 +63,7 @@ B) Classic XML Views
 
 C) Other (please describe after [Answer]: tag below)
 
-[Answer]: 
+[Answer]: A
 
 ## Question 5
 How should the app look?
@@ -76,7 +76,7 @@ C) iOS design by default, with an option in Settings to use dynamic colors
 
 D) Other (please describe after [Answer]: tag below)
 
-[Answer]: 
+[Answer]: A
 
 ## Question 6
 What should the Home Screen widget offer?
@@ -89,7 +89,7 @@ C) No widget for now
 
 D) Other (please describe after [Answer]: tag below)
 
-[Answer]: 
+[Answer]: A
 
 ## Question 7
 How should entries be stored and protected against losing the phone? Android has no direct equivalent of iCloud sync, and syncing with the iOS app would need a server, which the iOS app deliberately avoids.
@@ -102,7 +102,7 @@ C) Live sync between Android devices through the user's Google account (more wor
 
 D) Other (please describe after [Answer]: tag below)
 
-[Answer]: 
+[Answer]: B
 
 ## Question 8
 Should the Android app support daily reminder notifications? On Android 13 and later this requires asking for notification permission.
@@ -113,7 +113,7 @@ B) No reminders
 
 C) Other (please describe after [Answer]: tag below)
 
-[Answer]: 
+[Answer]: A
 
 ## Question 9
 Which devices should be supported?
@@ -124,7 +124,7 @@ B) Phones and tablets (adaptive layout)
 
 C) Other (please describe after [Answer]: tag below)
 
-[Answer]: 
+[Answer]: A
 
 ## Question 10
 Which languages should the app support?
@@ -135,7 +135,7 @@ B) English and Spanish
 
 C) Other (please describe after [Answer]: tag below)
 
-[Answer]: 
+[Answer]: A
 
 ## Question 11
 How should the code be organized?
@@ -146,7 +146,7 @@ B) A single app module with packages for each layer (simpler build, less separat
 
 C) Other (please describe after [Answer]: tag below)
 
-[Answer]: 
+[Answer]: A
 
 ## Question 12
 What level of automated testing is expected?
@@ -159,7 +159,7 @@ C) Minimal tests
 
 D) Other (please describe after [Answer]: tag below)
 
-[Answer]: 
+[Answer]: A
 
 ## Question 13
 How will the app be distributed?
@@ -172,7 +172,7 @@ C) Public release on Google Play
 
 D) Other (please describe after [Answer]: tag below)
 
-[Answer]: 
+[Answer]: A
 
 ## Question 14
 This Mac has Java 21 and adb, but no Android SDK or Android Studio. How should the build tools be set up?
@@ -183,7 +183,7 @@ B) Install the Android command-line tools with Homebrew, so builds, tests and an
 
 C) Other (please describe after [Answer]: tag below)
 
-[Answer]: 
+[Answer]: A
 
 ## Question 15
 Should anything else work differently from iOS? For example: allowing more than one entry per day, editing past entries, deleting entries, a different refresh limit, or a different grace-window time.
@@ -194,7 +194,7 @@ B) Yes (describe the differences after the [Answer]: tag)
 
 C) Other (please describe after [Answer]: tag below)
 
-[Answer]: 
+[Answer]: A
 
 ---
 
@@ -207,7 +207,7 @@ B) No — skip all SECURITY rules (suitable for PoCs, prototypes, and experiment
 
 X) Other (please describe after [Answer]: tag below)
 
-[Answer]: 
+[Answer]: A
 
 ## Question: Resiliency Extensions
 Should the resiliency baseline be applied to this project?
@@ -224,7 +224,7 @@ B) No — skip the resiliency baseline (suitable for PoCs, prototypes, and exper
 
 X) Other (please describe after [Answer]: tag below)
 
-[Answer]: 
+[Answer]: A
 
 ## Question: Property-Based Testing Extension
 Should property-based testing (PBT) rules be enforced for this project?
@@ -237,4 +237,4 @@ C) No — skip all PBT rules (suitable for simple CRUD applications, UI-only pro
 
 X) Other (please describe after [Answer]: tag below)
 
-[Answer]: 
+[Answer]: A

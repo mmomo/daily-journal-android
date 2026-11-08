@@ -4,7 +4,7 @@
 - **Project Type**: Greenfield
 - **Project**: Daily Journal for Android (Android version of the Daily Journal iOS app)
 - **Start Date**: 2026-11-08T00:20:28Z
-- **Current Stage**: INCEPTION - Requirements Analysis (awaiting answers)
+- **Current Stage**: CONSTRUCTION - Domain unit, Code Generation (complete - awaiting approval)
 
 ## Workspace State
 - **Existing Code**: No
@@ -24,11 +24,53 @@
 
 ## Development Environment (detected 2026-11-08T00:20:28Z)
 - JDK 21 installed; adb installed (Homebrew)
-- Android SDK and Android Studio not installed
+- Android SDK and Android Studio not installed at start; installed by the user before Domain Code Generation (SDK platform API 37, build tools 36.0.0)
+
+## Extension Configuration
+| Extension | Enabled | Decided At |
+|---|---|---|
+| Security Baseline | Yes (on-device rules enforced; server-only rules N/A, C1:B) | Requirements Analysis |
+| Resiliency Baseline | No (turned off in clarification C1:B) | Requirements Analysis |
+| Property-Based Testing | Yes (full enforcement) | Requirements Analysis |
+
+## Execution Plan Summary
+- **Total Stages**: 14 (including Operations placeholder)
+- **Stages to Execute**: Application Design, Units Generation, Functional Design (units with business logic), NFR Requirements, NFR Design, Code Generation (per unit), Build and Test
+- **Stages to Skip**: Reverse Engineering (greenfield), Infrastructure Design (no cloud resources; CI workflow is created in Code Generation)
+- **Prerequisite**: Android Studio (with SDK) installed by the user before Code Generation of the first unit
+
+## Units of Work (build order)
+| # | Unit | Module | Stages | Status |
+|---|---|---|---|---|
+| 1 | Domain (+ project setup, CI) | :domain | FD, NFR Req, NFR Design, Code | Code generated (113 tests pass); awaiting approval |
+| 2 | Data | :data | FD, NFR Req, NFR Design, Code | Not started |
+| 3 | App | :app | NFR Req, NFR Design, Code | Not started |
+| 4 | Widget | :widget | Code | Not started |
 
 ## Stage Progress
 
 ### 🔵 INCEPTION PHASE
 - [x] Workspace Detection
 - [x] Reverse Engineering (SKIPPED - Greenfield)
-- [ ] Requirements Analysis
+- [x] Requirements Analysis (approved 2026-11-07)
+- [x] User Stories (approved 2026-11-07)
+- [x] Workflow Planning (approved 2026-11-07)
+- [x] Application Design (approved 2026-11-07)
+- [x] Units Generation (approved 2026-11-07)
+
+### 🟢 CONSTRUCTION PHASE
+- [ ] Functional Design - EXECUTE (units with business logic)
+- [ ] NFR Requirements - EXECUTE
+- [ ] NFR Design - EXECUTE
+- [ ] Infrastructure Design - SKIP
+- [ ] Code Generation - EXECUTE
+- [ ] Build and Test - EXECUTE
+
+### 🟡 OPERATIONS PHASE
+- [ ] Operations - PLACEHOLDER
+
+## Current Status
+- **Lifecycle Phase**: CONSTRUCTION
+- **Current Stage**: Domain unit - Code Generation (complete, pushed to GitHub)
+- **Next Stage**: Data unit - Functional Design
+- **Status**: Domain code awaiting approval
